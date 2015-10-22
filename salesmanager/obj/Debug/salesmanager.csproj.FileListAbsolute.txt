@@ -1,0 +1,15 @@
+D:\1工作目录\salesmanager\salesmanager\salesmanager\bin\salesmanager.dll
+D:\1工作目录\salesmanager\salesmanager\salesmanager\bin\salesmanager.pdb
+D:\1工作目录\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.dll
+D:\1工作目录\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.pdb
+D:\1工作目录\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.csprojResolveAssemblyReference.cache
+D:\1.工具目录\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\bin\salesmanager.dll
+D:\1.工具目录\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\bin\salesmanager.pdb
+D:\1.工具目录\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\obj\Debug\ResolveAssemblyReference.cache
+D:\1.工具目录\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.dll
+D:\1.工具目录\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.pdb
+D:\1.工具目录\销售客户管理系统\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\bin\salesmanager.dll
+D:\1.工具目录\销售客户管理系统\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\bin\salesmanager.pdb
+D:\1.工具目录\销售客户管理系统\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.dll
+D:\1.工具目录\销售客户管理系统\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.pdb
+D:\1.工具目录\销售客户管理系统\销售管理\salesmanager\salesmanager\salesmanager\salesmanager\obj\Debug\salesmanager.csprojResolveAssemblyReference.cache

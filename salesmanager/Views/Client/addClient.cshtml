@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "addClient";
+}
+
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../../Content/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.sorted.js" type="text/javascript"></script>
+    <script src="../../Scripts/bootstrap.js" type="text/javascript"></script>
+    <script src="../../Scripts/ckform.js" type="text/javascript"></script>
+    <script src="../../Scripts/common.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.datetimepicker.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        body {
+            padding: 20px;
+            background-color:White;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+        .tableleft
+        {
+            background-color:#EAEAEA;
+        }
+
+        @@media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+
+    </style>
+</head>
+    <body>
+        <table class="table table-bordered table-hover m10">
+            <tr>
+                <td width="10%" class="tableleft">客户名称</td>
+                <td>
+                    <input type="text" id="clientname" name="clientname" /><span style="color:Red">(*请输入客户的完整名称)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">行业</td>
+                <td><input type="text" id="industry" name="industry"/></td>
+            </tr>
+            <tr>
+                <td class="tableleft">地址</td>
+                <td><input type="text" id="address" name="address"/></td>
+            </tr>
+            <tr>
+                <td class="tableleft">区域</td>
+                <td>
+                    <select id="area" name="area">
+                        <option value="0">北方大区</option>
+                        <option value="1">南方大区</option>
+                        <option value="2">华东大区</option>
+                        <option value="3">上海大区</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">客户来源渠道</td>
+                <td>
+                    <input type="text" id="clientfrom" name="clientfrom" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">联系人</td>
+                <td><input type="text" id="contact" name="contact" /></td>
+            </tr>
+            <tr>
+                <td class="tableleft">联系人电话</td>
+                <td><input type="text" id="contactphone" name="contactphone" /></td>
+            </tr>
+            <tr>
+                <td class="tableleft">预期签订时间</td>
+                <td><input id="presigntime" type="text" ></td>
+            </tr>
+            <tr>
+                <td class="tableleft">实际签订时间</td>
+                <td><input id="signtime" type="text" ></td>
+            </tr>
+            <tr>
+                <td class="tableleft">预期金额</td>
+                <td><input type="text" id="preamt" name="preamt" /></td>
+            </tr>
+            <tr>
+                <td class="tableleft">实际金额</td>
+                <td><input type="text" id="amt" name="amt" /></td>
+            </tr>
+            <tr>
+                <td class="tableleft"></td>
+                <td>
+                    <button type="submit" id="submit" class="btn btn-primary" type="button">保存</button>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $('#presigntime').datetimepicker();
+        $('#signtime').datetimepicker();
+        var clientfromvalue=[
+            "代理",
+            "団膳",
+            "集成商",
+            "协会",
+            "一卡通",
+            "直接用户",
+            "朋友关系"
+        ];
+        $("#clientfrom").autocomplete({
+            source:clientfromvalue
+        });
+        $("#submit").click(function () {
+            //            alert($("#clientfrom option:selected").text());
+            var saleID=@ViewData["id"];
+            var clientparam = {
+                saleID:saleID,
+                clientname: $("#clientname").val(),
+                industry: $("#industry").val(),
+                address: $("#address").val(),
+                area: $("#area option:selected").text(),
+                areavalue:$("#area").val(),
+                clientfrom:$("#clientfrom").val(),
+                contact: $("#contact").val(),
+                contactphone: $("#contactphone").val(),
+                presigntime: $("#presigntime").val(),
+                signtime: $("#signtime").val(),
+                preamt: $("#preamt").val(),
+                amt: $("#amt").val()
+            };
+            $.post("/Client/ClientAdd", clientparam, function (res) {
+                switch(res.code){
+                    case '0':
+                        alert("添加成功");
+                        $("#clientname").val("");
+                        $("#industry").val("");
+                        $("#address").val("");
+                        $("#area").val("");
+                        $("#clientfrom").val("");
+                        $("#contact").val("");
+                        $("#contactphone").val("");
+                        $("#preamt").val("");
+                        $("#amt").val("");
+                        break;
+                    case '1':
+                        alert("添加失败（客户已存在）");
+                        break;
+                    case '2':
+                        alert("客户名称不能为空");
+                        break;
+                }
+            });
+        });
+    });
+</script>
